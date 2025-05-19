@@ -1,7 +1,9 @@
-﻿public class Game
-{
-    private bool _isRunning;
+﻿using DGD208_Spring2025_Hasan_Mucahit_Ozkan;
 
+public class Game
+{
+    private List<Pet> _pets = new List<Pet>();
+    private bool _isRunning;
     public async Task GameLoop()
     {
         // Initialize the game
@@ -23,18 +25,64 @@
 
     private void Initialize()
     {
-        // Use this to initialize the game
+        Console.Clear();
+        Console.WriteLine("TAMAGOTCHI");
+        Console.WriteLine("Hasan Mücahit Özkan - 2305041016");
+        Console.WriteLine("Press any key to start...");
+        Console.ReadKey();
     }
 
     private string GetUserInput()
     {
-        // Use this to display appropriate menu and get user inputs
-        return "";
+        Console.Clear();
+        Console.WriteLine("Main Menu:");
+        Console.WriteLine("1. Adopt new Pet");
+        Console.WriteLine("2. Take a look at your pets");
+        Console.WriteLine("3. Spent time with your pets");
+        Console.WriteLine("4. Exit");
+
+        Console.Write("Enter your choice: ");
+        string input = Console.ReadLine().ToString();
+        return input;
     }
 
     private async Task ProcessUserChoice(string choice)
     {
-        // Use this to process any choice user makes
-        // Set _isRunning = false to exit the game
+        switch (choice)
+        {
+            case "1":
+                Console.Clear();
+                Console.WriteLine("You chose to adopt a new pet.");
+                var petTypeMenu = new Menu<PetType>("Choose a New Pet to Adopt", Enum.GetValues(typeof(PetType)).Cast<PetType>().ToList(), type => type.ToString());
+
+                PetType selectedType = petTypeMenu.ShowAndGetSelection();
+                if (!Enum.IsDefined(typeof(PetType), selectedType))
+                    break;
+                Pet newPet = new Pet();
+                newPet.AdoptPet(selectedType);
+                _pets.Add(newPet);
+                Console.WriteLine($"You adopted a {selectedType}");
+                await Task.Delay(1500);
+                break;
+
+            case "2":
+                Console.Clear();
+                Console.WriteLine("Here are your pets and their stats:");
+                for (int i = 0; i < _pets.Count; i++)
+                {
+                    _pets[i].ShowPetCondition();
+                }
+                Console.WriteLine("Press anything to continue");
+                Console.ReadLine(); 
+                break;
+            case "3":
+
+                break;
+            case "4":
+                Console.WriteLine("Exiting the game...");
+                _isRunning = false;
+                break;
+
+        }
     }
 }
