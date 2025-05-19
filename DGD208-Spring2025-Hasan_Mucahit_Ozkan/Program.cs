@@ -1,2 +1,14 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using System;
+namespace DGD208Spring2025HasanMucahitOzkan
+
+{
+
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("HasanKaradeniz");
+        }
+    }
+
+}
