@@ -2,7 +2,7 @@
 /// A generic menu system that can display a list of items and get user selection.
 /// </summary>
 /// <typeparam name="T">The type of items in the menu</typeparam>
-public class Menu<T>
+public class Menu<T> where T : struct
 {
     private readonly List<T> _items;
     private readonly string _title;
@@ -18,20 +18,20 @@ public class Menu<T>
     {
         _title = title;
         _items = items ?? new List<T>();
-        _displaySelector = displaySelector ?? (item => item?.ToString() ?? "");
+        _displaySelector = displaySelector ?? (item => item.ToString());
     }
 
     /// <summary>
     /// Displays the menu and gets the user's selection.
     /// </summary>
     /// <returns>The selected item, or default(T) if the user chooses to go back</returns>
-    public T ShowAndGetSelection()
+    public T? ShowAndGetSelection()
     {
         if (_items.Count == 0)
         {
             Console.WriteLine($"No items available in {_title}. Press any key to continue...");
             Console.ReadKey();
-            return default;
+            return null;
         }
 
         while (true)
@@ -59,7 +59,7 @@ public class Menu<T>
             {
                 // Check for "Go Back" option
                 if (selection == 0)
-                    return default; // Return default value of T to indicate backing out
+                    return null; // Return default value of T to indicate backing out
 
                 // Check if selection is valid
                 if (selection > 0 && selection <= _items.Count)

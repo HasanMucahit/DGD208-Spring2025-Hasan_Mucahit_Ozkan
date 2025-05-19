@@ -55,11 +55,12 @@ public class Game
                 Console.WriteLine("You chose to adopt a new pet.");
                 var petTypeMenu = new Menu<PetType>("Choose a New Pet to Adopt", Enum.GetValues(typeof(PetType)).Cast<PetType>().ToList(), type => type.ToString());
 
-                PetType selectedType = petTypeMenu.ShowAndGetSelection();
-                if (!Enum.IsDefined(typeof(PetType), selectedType))
+                PetType? selectedType = petTypeMenu.ShowAndGetSelection();
+                if (!selectedType.HasValue)
                     break;
+
                 Pet newPet = new Pet();
-                newPet.AdoptPet(selectedType);
+                newPet.AdoptPet(selectedType.Value);
                 _pets.Add(newPet);
                 Console.WriteLine($"You adopted a {selectedType}");
                 await Task.Delay(1500);
