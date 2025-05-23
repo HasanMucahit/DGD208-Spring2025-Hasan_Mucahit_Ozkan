@@ -28,7 +28,7 @@ public class Game
         Console.Clear();
         Console.WriteLine("TAMAGOTCHI");
         Console.WriteLine("Hasan Mücahit Özkan - 2305041016");
-        Console.WriteLine("Press any key to start...");
+        Console.WriteLine("Press any key to start");
         Console.ReadKey();
     }
 

@@ -4,6 +4,8 @@ namespace DGD208_Spring2025_Hasan_Mucahit_Ozkan
 {
     internal class Pet
     {
+        List<AdoptedPet> adoptedPets = new List<AdoptedPet>();
+
         PetType petType;
         int hunger;
         int sleep;
@@ -11,14 +13,17 @@ namespace DGD208_Spring2025_Hasan_Mucahit_Ozkan
 
         public void AdoptPet(PetType type)
         {
-            petType = type;
-            hunger = 50;
-            sleep = 50;
-            fun = 50;
+            AdoptedPet adoptedPet = new AdoptedPet();
+            adoptedPets.Add(adoptedPet);
+            adoptedPet.AdoptPet(type);
         }
         public void ShowPetCondition()
         {
-            Console.WriteLine(petType + "/ Hunger/ " + hunger + "/ Sleep/ " + sleep + "/ Fun/ " + fun);
+            foreach (var _adoptedPet in adoptedPets)
+            {
+
+                _adoptedPet.ShowPetCondition();
+            }
         }
 
     }
