@@ -6,11 +6,6 @@ namespace DGD208_Spring2025_Hasan_Mucahit_Ozkan
     {
         List<AdoptedPet> adoptedPets = new List<AdoptedPet>();
 
-        PetType petType;
-        int hunger;
-        int sleep;
-        int fun;
-
         public void AdoptPet(PetType type)
         {
             AdoptedPet adoptedPet = new AdoptedPet();
@@ -21,7 +16,6 @@ namespace DGD208_Spring2025_Hasan_Mucahit_Ozkan
         {
             foreach (var _adoptedPet in adoptedPets)
             {
-
                 _adoptedPet.ShowPetCondition();
             }
         }
