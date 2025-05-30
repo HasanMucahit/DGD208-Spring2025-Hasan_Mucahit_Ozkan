@@ -28,7 +28,7 @@ public class Game
         Console.Clear();
         Console.WriteLine("TAMAGOTCHI");
         Console.WriteLine("Hasan Mücahit Özkan - 2305041016");
-        Console.WriteLine("Press any key to start");
+        Console.WriteLine("Press enter to start");
         Console.ReadKey();
     }
 
@@ -73,7 +73,7 @@ public class Game
                 {
                     _pets[i].ShowPetCondition();
                 }
-                Console.WriteLine("Press anything to continue");
+                Console.WriteLine("Press enter to continue");
                 Console.ReadLine(); 
                 break;
             case "3":
