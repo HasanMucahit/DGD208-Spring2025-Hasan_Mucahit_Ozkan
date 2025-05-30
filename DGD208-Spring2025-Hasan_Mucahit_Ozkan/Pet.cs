@@ -5,7 +5,7 @@ namespace DGD208_Spring2025_Hasan_Mucahit_Ozkan
 {
     internal class Pet
     {
-        List<AdoptedPet> adoptedPets = new List<AdoptedPet>();
+       public List<AdoptedPet> adoptedPets = new List<AdoptedPet>();
 
         private System.Timers.Timer timer;
 

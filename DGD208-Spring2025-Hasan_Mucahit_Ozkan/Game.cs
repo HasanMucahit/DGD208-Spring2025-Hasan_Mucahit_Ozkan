@@ -2,7 +2,10 @@
 
 public class Game
 {
-    private List<Pet> _pets = new List<Pet>();
+    //private List<Pet> _pets = new List<Pet>();
+
+    Pet petScript = new Pet();
+
     private bool _isRunning;
     public async Task GameLoop()
     {
@@ -59,9 +62,12 @@ public class Game
                 if (!selectedType.HasValue)
                     break;
 
-                Pet newPet = new Pet();
-                newPet.AdoptPet(selectedType.Value);
-                _pets.Add(newPet);
+                //Pet newPet = new Pet();
+                //newPet.AdoptPet(selectedType.Value);
+
+                petScript.AdoptPet((PetType)selectedType);
+                //_pets.Add(newPet);
+
                 Console.WriteLine($"You adopted a {selectedType}");
                 await Task.Delay(1500);
                 break;
@@ -69,14 +75,61 @@ public class Game
             case "2":
                 Console.Clear();
                 Console.WriteLine("Here are your pets and their stats:");
-                for (int i = 0; i < _pets.Count; i++)
+                for (int i = 0; i < petScript.adoptedPets.Count; i++)
                 {
-                    _pets[i].ShowPetCondition();
+                    petScript.adoptedPets[i].ShowPetCondition();
                 }
                 Console.WriteLine("Press enter to continue");
-                Console.ReadLine(); 
+                Console.ReadLine();
                 break;
             case "3":
+                if (petScript.adoptedPets.Count == 0)
+                {
+                    Console.WriteLine("No adopted pets available.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    break;
+                }
+
+                // Display adopted pets
+                Console.WriteLine("Select a pet:");
+                for (int i = 0; i < petScript.adoptedPets.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}. {petScript.adoptedPets[i].petType}");
+                }
+                if (!int.TryParse(Console.ReadLine(), out int petIndex) || petIndex < 1 || petIndex > petScript.adoptedPets.Count)
+                {
+                    Console.WriteLine("Invalid selection.");
+                    break;
+                }
+                var selectedPet = petScript.adoptedPets[petIndex - 1];
+
+                // Filter items usable by the selected pet (example with LINQ)
+                var usableItems = ItemDatabase.AllItems
+                    .Where(item => item.CompatibleWith.Contains(selectedPet.petType))
+                    .ToList();
+
+                if (usableItems.Count == 0)
+                {
+                    Console.WriteLine("No usable items for this pet.");
+                    break;
+                }
+
+                Console.WriteLine("Select an item to use:");
+                for (int i = 0; i < usableItems.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}. {usableItems[i].Name}");
+                }
+                if (!int.TryParse(Console.ReadLine(), out int itemIndex) || itemIndex < 1 || itemIndex > usableItems.Count)
+                {
+                    Console.WriteLine("Invalid selection.");
+                    break;
+                }
+
+                var selectedItem = usableItems[itemIndex - 1];
+
+                // Use the item asynchronously and wait
+                await selectedPet.UseItemAsync(selectedItem);
 
                 break;
             case "4":
@@ -85,5 +138,7 @@ public class Game
                 break;
 
         }
+
     }
+
 }
