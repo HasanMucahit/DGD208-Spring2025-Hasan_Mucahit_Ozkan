@@ -12,20 +12,44 @@ namespace DGD208_Spring2025_Hasan_Mucahit_Ozkan
         PetType petType;
         int hunger;
         int sleep;
-        int joy;
+        int boredom;
+
+        bool isDead = false;
 
         public void AdoptPet(PetType _petType)
         {
             petType = _petType;
 
-            hunger = sleep = joy = 50;
+            hunger = sleep = boredom = 50;
         }
 
         public void ShowPetCondition()
         {
 
-            Console.WriteLine(petType + "/ Hunger/ " + hunger + "/ Sleep/ " + sleep + "/ Joy/ " + joy);
+            Console.WriteLine(petType + "/ Hunger/ " + hunger + "/ Sleep/ " + sleep + "/ Joy/ " + boredom);
 
+        }
+        public void DecreaseStats()
+        {
+            hunger++;
+            sleep++;
+            boredom++;
+        }
+
+
+
+        public bool IsDead()
+        {
+            CheckDeath();
+            return isDead;
+        }
+
+        public void CheckDeath()
+        {
+            if (hunger <= 0 || sleep <= 0 || boredom <= 0)
+            {
+                isDead = true;
+            }
         }
     }
 }
