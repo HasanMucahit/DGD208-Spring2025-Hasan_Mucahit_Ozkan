@@ -13,7 +13,7 @@ namespace DGD208_Spring2025_Hasan_Mucahit_Ozkan
         public PetType petType;
         int hunger;
         int sleep;
-        int boredom;
+        int fun;
 
         bool isDead = false;
 
@@ -21,20 +21,20 @@ namespace DGD208_Spring2025_Hasan_Mucahit_Ozkan
         {
             petType = _petType;
 
-            hunger = sleep = boredom = 50;
+            hunger = sleep = fun = 50;
         }
 
         public void ShowPetCondition()
         {
 
-            Console.WriteLine(petType + "/ Hunger/ " + hunger + "/ Sleep/ " + sleep + "/ Joy/ " + boredom);
+            Console.WriteLine(petType + "=> Hunger -> " + hunger + " -> Sleep " + sleep + " -> Joy " + fun);
 
         }
         public void DecreaseStats()
         {
-            hunger++;
-            sleep++;
-            boredom++;
+            hunger--;
+            sleep--;
+            fun--;
         }
 
 
@@ -47,7 +47,7 @@ namespace DGD208_Spring2025_Hasan_Mucahit_Ozkan
 
         public void CheckDeath()
         {
-            if (hunger <= 0 || sleep <= 0 || boredom <= 0)
+            if (hunger <= 0 || sleep <= 0 || fun <= 0)
             {
                 isDead = true;
             }
@@ -55,22 +55,27 @@ namespace DGD208_Spring2025_Hasan_Mucahit_Ozkan
         public async Task UseItemAsync(Item item)
         {
             Console.WriteLine($"Using {item.Name} on {petType}...");
-            await Task.Delay((int)(item.Duration * 1000));  // Wait for the duration the item takes to be used
+            await Task.Delay((int)(item.Duration * 1000)); 
 
             // Increase stats based on item type
-            switch (item.Type)
+            switch (item.AffectedStat)
             {
-                case ItemType.Food:
-                    hunger = Math.Min(100, hunger - item.EffectAmount);
+                case PetStat.Hunger:
+                    hunger = Math.Min(100, hunger + item.EffectAmount);
                     break;
-                case ItemType.Toy:
-                    boredom = Math.Min(100, boredom - item.EffectAmount);
+
+                case PetStat.Sleep:
+                   sleep = Math.Min(100, sleep + item.EffectAmount);
                     break;
-                    // Add other item types if necessary
+
+                case PetStat.Fun:
+                    fun = Math.Min(100, fun + item.EffectAmount);
+                    break;
+
             }
 
-            Console.WriteLine($"{petType}'s stats updated: Hunger={hunger}, Boredom={boredom}");
-            Console.WriteLine("Press enter to continue");
+            Console.WriteLine($"{petType}'s stats updated: Hunger=> {hunger}, Sleep=> {sleep} , Boredom=> {fun}");
+            Console.WriteLine("Press enter to continue.");
             Console.ReadLine();
         }
     }

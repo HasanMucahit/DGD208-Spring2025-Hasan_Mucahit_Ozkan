@@ -1,8 +1,8 @@
 ﻿public enum PetType
 {
-    Dog,
-    Cat,
+    Kangal,
+    Tekir,
     Bird,
-    Fish,
+    Hamsi,
     Rabbit
 }

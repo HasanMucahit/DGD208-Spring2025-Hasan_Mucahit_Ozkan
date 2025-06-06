@@ -6,7 +6,7 @@
         new Item {
             Name = "Kibble",
             Type = ItemType.Food,
-            CompatibleWith = new List<PetType> { PetType.Dog },
+            CompatibleWith = new List<PetType> { PetType.Kangal },
             AffectedStat = PetStat.Hunger,
             EffectAmount = 15,
             Duration = 2.5f  // Takes 2.5 seconds to eat
@@ -14,7 +14,7 @@
         new Item {
             Name = "Premium Dog Food",
             Type = ItemType.Food,
-            CompatibleWith = new List<PetType> { PetType.Dog },
+            CompatibleWith = new List<PetType> { PetType.Kangal },
             AffectedStat = PetStat.Hunger,
             EffectAmount = 30,
             Duration = 3.0f  // Takes 3 seconds to eat
@@ -22,7 +22,7 @@
         new Item {
             Name = "Cat Food",
             Type = ItemType.Food,
-            CompatibleWith = new List<PetType> { PetType.Cat },
+            CompatibleWith = new List<PetType> { PetType.Tekir },
             AffectedStat = PetStat.Hunger,
             EffectAmount = 15,
             Duration = 2.0f
@@ -30,7 +30,7 @@
         new Item {
             Name = "Tuna Treat",
             Type = ItemType.Food,
-            CompatibleWith = new List<PetType> { PetType.Cat },
+            CompatibleWith = new List<PetType> { PetType.Tekir },
             AffectedStat = PetStat.Hunger,
             EffectAmount = 25,
             Duration = 1.5f  // Quick treat
@@ -54,7 +54,7 @@
         new Item {
             Name = "Fish Flakes",
             Type = ItemType.Food,
-            CompatibleWith = new List<PetType> { PetType.Fish },
+            CompatibleWith = new List<PetType> { PetType.Hamsi },
             AffectedStat = PetStat.Hunger,
             EffectAmount = 10,
             Duration = 0.5f  // Very quick to consume
@@ -62,7 +62,7 @@
         new Item {
             Name = "Premium Fish Pellets",
             Type = ItemType.Food,
-            CompatibleWith = new List<PetType> { PetType.Fish },
+            CompatibleWith = new List<PetType> { PetType.Hamsi },
             AffectedStat = PetStat.Hunger,
             EffectAmount = 20,
             Duration = 1.0f
@@ -88,7 +88,7 @@
         new Item {
             Name = "Vitamin Treat",
             Type = ItemType.Food,
-            CompatibleWith = new List<PetType> { PetType.Dog, PetType.Cat, PetType.Rabbit },
+            CompatibleWith = new List<PetType> { PetType.Kangal, PetType.Tekir, PetType.Rabbit },
             AffectedStat = PetStat.Hunger,
             EffectAmount = 10,
             Duration = 1.0f  // Quick treat
@@ -96,7 +96,7 @@
         new Item {
             Name = "Gourmet Dinner",
             Type = ItemType.Food,
-            CompatibleWith = new List<PetType> { PetType.Dog, PetType.Cat },
+            CompatibleWith = new List<PetType> { PetType.Kangal, PetType.Tekir },
             AffectedStat = PetStat.Hunger,
             EffectAmount = 40,
             Duration = 5.0f  // Fancy meal takes time
@@ -106,7 +106,7 @@
         new Item {
             Name = "Tennis Ball",
             Type = ItemType.Toy,
-            CompatibleWith = new List<PetType> { PetType.Dog },
+            CompatibleWith = new List<PetType> { PetType.Kangal },
             AffectedStat = PetStat.Fun,
             EffectAmount = 20,
             Duration = 4.0f  // Playing fetch takes time
@@ -114,7 +114,7 @@
         new Item {
             Name = "Squeaky Toy",
             Type = ItemType.Toy,
-            CompatibleWith = new List<PetType> { PetType.Dog },
+            CompatibleWith = new List<PetType> { PetType.Kangal },
             AffectedStat = PetStat.Fun,
             EffectAmount = 15,
             Duration = 2.5f
@@ -122,7 +122,7 @@
         new Item {
             Name = "String Toy",
             Type = ItemType.Toy,
-            CompatibleWith = new List<PetType> { PetType.Cat },
+            CompatibleWith = new List<PetType> { PetType.Tekir },
             AffectedStat = PetStat.Fun,
             EffectAmount = 20,
             Duration = 3.0f  // Playing with string
@@ -130,7 +130,7 @@
         new Item {
             Name = "Toy Mouse",
             Type = ItemType.Toy,
-            CompatibleWith = new List<PetType> { PetType.Cat },
+            CompatibleWith = new List<PetType> { PetType.Tekir },
             AffectedStat = PetStat.Fun,
             EffectAmount = 15,
             Duration = 2.0f
@@ -154,7 +154,7 @@
         new Item {
             Name = "Bubbler",
             Type = ItemType.Toy,
-            CompatibleWith = new List<PetType> { PetType.Fish },
+            CompatibleWith = new List<PetType> { PetType.Hamsi },
             AffectedStat = PetStat.Fun,
             EffectAmount = 10,
             Duration = 2.0f  // Watching bubbles
@@ -162,7 +162,7 @@
         new Item {
             Name = "Water Plant",
             Type = ItemType.Toy,
-            CompatibleWith = new List<PetType> { PetType.Fish },
+            CompatibleWith = new List<PetType> { PetType.Hamsi },
             AffectedStat = PetStat.Fun,
             EffectAmount = 15,
             Duration = 1.5f
@@ -188,7 +188,7 @@
         new Item {
             Name = "Ball",
             Type = ItemType.Toy,
-            CompatibleWith = new List<PetType> { PetType.Dog, PetType.Cat, PetType.Rabbit },
+            CompatibleWith = new List<PetType> { PetType.Kangal, PetType.Tekir, PetType.Rabbit },
             AffectedStat = PetStat.Fun,
             EffectAmount = 10,
             Duration = 2.0f
@@ -198,7 +198,7 @@
         new Item {
             Name = "Comfy Bed",
             Type = ItemType.Toy,
-            CompatibleWith = new List<PetType> { PetType.Dog, PetType.Cat },
+            CompatibleWith = new List<PetType> { PetType.Kangal, PetType.Tekir },
             AffectedStat = PetStat.Sleep,
             EffectAmount = 30,
             Duration = 6.0f  // Takes time to fall asleep
@@ -206,7 +206,7 @@
         new Item {
             Name = "Pet Blanket",
             Type = ItemType.Toy,
-            CompatibleWith = new List<PetType> { PetType.Dog, PetType.Cat, PetType.Rabbit },
+            CompatibleWith = new List<PetType> { PetType.Kangal, PetType.Tekir, PetType.Rabbit },
             AffectedStat = PetStat.Sleep,
             EffectAmount = 20,
             Duration = 4.0f
@@ -222,7 +222,7 @@
         new Item {
             Name = "Cave Decoration",
             Type = ItemType.Toy,
-            CompatibleWith = new List<PetType> { PetType.Fish },
+            CompatibleWith = new List<PetType> { PetType.Hamsi },
             AffectedStat = PetStat.Sleep,
             EffectAmount = 15,
             Duration = 2.0f

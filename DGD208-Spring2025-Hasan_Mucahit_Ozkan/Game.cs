@@ -2,7 +2,8 @@
 
 public class Game
 {
-    //private List<Pet> _pets = new List<Pet>();
+    //It needs to show data from items
+    //Item needs to affect sleep too
 
     Pet petScript = new Pet();
 
@@ -31,6 +32,7 @@ public class Game
         Console.Clear();
         Console.WriteLine("TAMAGOTCHI");
         Console.WriteLine("Hasan Mücahit Özkan - 2305041016");
+        Console.WriteLine("Thanks to Chatgpt too.");
         Console.WriteLine("Press enter to start");
         Console.ReadKey();
     }
@@ -40,8 +42,8 @@ public class Game
         Console.Clear();
         Console.WriteLine("Main Menu:");
         Console.WriteLine("1. Adopt new Pet");
-        Console.WriteLine("2. Take a look at your pets");
-        Console.WriteLine("3. Spent time with your pets");
+        Console.WriteLine("2. Take a look at your pet(s)");
+        Console.WriteLine("3. Items");
         Console.WriteLine("4. Exit");
 
         Console.Write("Enter your choice: ");
@@ -118,7 +120,7 @@ public class Game
                 Console.WriteLine("Select an item to use:");
                 for (int i = 0; i < usableItems.Count; i++)
                 {
-                    Console.WriteLine($"{i + 1}. {usableItems[i].Name}");
+                    Console.WriteLine($"{i + 1}. {usableItems[i].Name} -> {usableItems[i].AffectedStat} + {usableItems[i].EffectAmount}");
                 }
                 if (!int.TryParse(Console.ReadLine(), out int itemIndex) || itemIndex < 1 || itemIndex > usableItems.Count)
                 {
